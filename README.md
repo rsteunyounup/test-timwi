@@ -3,7 +3,7 @@
 ## Créer la base de donnée PostgreSQL
 CREATE DATABASE spotify;
 
-## Modifier le fichier application.properties et mettre à jour le username le le password
+## Modifier le fichier application.properties et mettre à jour le username le password
 
 ## Build maven 
 mvn install -DskipTests
