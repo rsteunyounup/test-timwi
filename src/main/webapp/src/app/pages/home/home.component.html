@@ -1,0 +1,10 @@
+<div *ngFor="let album of searchedAlbums">
+  <p>{{album.album_type}}</p>
+  <p>{{album.artists[0].name}}</p>
+  <p>{{album.href}}</p>
+  <p>{{album.name}}</p>
+  <p>{{album.release_date}}</p>
+  <p>{{album.id}}</p>
+  <p>{{album.total_tracks}}</p>
+  <iframe [src]="album.uri | uri" width="600" height="600" allowtransparency="true"></iframe>
+</div>

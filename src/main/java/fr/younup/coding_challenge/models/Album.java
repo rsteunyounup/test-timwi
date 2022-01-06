@@ -1,12 +1,13 @@
 package fr.younup.coding_challenge.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "_ALBUM")
+@Table(name = "ALBUM")
 @Getter
 @Setter
 @ToString
@@ -16,14 +17,17 @@ import java.util.Set;
 public class Album {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    @Column(name = "ALBUM_ID")
     private Integer id;
 
     @Column
     private String referenceId;
 
-    @ManyToMany (mappedBy = "favoriteAlbums")
+    @OneToMany(mappedBy = "album")
+    @JsonIgnore
     @ToString.Exclude
-    Set<User> users;
+    private Set<UserAlbum> albumUsers;
+
 }
 

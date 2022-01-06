@@ -1,12 +1,15 @@
 package fr.younup.coding_challenge.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "_USER")
+@Table(name = "USERS")
 @Getter
 @Setter
 @ToString
@@ -16,7 +19,8 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    @Column(name = "USER_ID")
     private Integer id;
 
     @Column
@@ -25,12 +29,9 @@ public class User {
     @Column
     private String password;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_album",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "album_id"))
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
     @ToString.Exclude
-    Set<Album> favoriteAlbums;
+    private Set<UserAlbum> albumUsers;
 
 }

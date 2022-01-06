@@ -1,8 +1,6 @@
-package fr.younup.coding_challenge.service;
+package fr.younup.coding_challenge.services;
 
-import fr.younup.coding_challenge.models.Album;
 import fr.younup.coding_challenge.models.User;
-import fr.younup.coding_challenge.repository.AlbumRepository;
 import fr.younup.coding_challenge.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +17,10 @@ public class UserService {
 
     public List<User> getAll(){
         return userRepository.findAll();
+    }
+
+    public void deleteAll(){
+        userRepository.deleteAll();
     }
 
 }
