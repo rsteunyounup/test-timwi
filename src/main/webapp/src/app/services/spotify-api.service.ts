@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {APIAlbums} from "../models/album-model";
@@ -16,7 +16,7 @@ export class SpotifyApiService {
     const url = `https://api.spotify.com/v1/${query}`;
 
     const headers = new HttpHeaders({
-      Authorization: 'Bearer BQDjl-8529gAD0CxgShREK-ge3g87avG9_G3XqMCZMdUyWFjjq6KRgruHHBU4wVROrpEJckhTTqkxNA6scq447FUAZEVgS_15t4X-qwS3iAQ-ywscfSRfaYoghMKh8k04y99gOQ'
+      Authorization: 'Bearer BQC8xCDOz1yzSm4NWHPuZqRdeKdIMAdMWSmAPl4QWxnXjeA64TchzGcqjFG_AF6mgs539sQ5P8Df5rd1PU7Pv2xAfEdwIiao6azTlyZHFmhTxgszwyRPEDTB-NsByFkOwX777kk'
     });
 
     return this.http.get(url, {headers});

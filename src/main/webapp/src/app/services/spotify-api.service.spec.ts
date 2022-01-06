@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { SpotifyApiService } from './spotify-api.service';
+import {SpotifyApiService} from './spotify-api.service';
 
 describe('SpotifyApiService', () => {
   let service: SpotifyApiService;

@@ -87,7 +87,7 @@ export interface Tracks {
 }
 
 export interface TracksItem {
-  album: Album;
+  album: SpotifyAlbum;
   artists: Artist[];
   available_markets: string[];
   disc_number: number;
@@ -106,7 +106,7 @@ export interface TracksItem {
   uri: string;
 }
 
-export interface Album {
+export interface SpotifyAlbum {
   album_type: AlbumTypeEnum;
   artists: Artist[];
   available_markets: string[];

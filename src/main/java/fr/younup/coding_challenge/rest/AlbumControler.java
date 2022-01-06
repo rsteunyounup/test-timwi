@@ -3,7 +3,6 @@ package fr.younup.coding_challenge.rest;
 import fr.younup.coding_challenge.exception.ResourceNotFoundException;
 import fr.younup.coding_challenge.models.Album;
 import fr.younup.coding_challenge.repository.AlbumRepository;
-import fr.younup.coding_challenge.repository.UserRepository;
 import fr.younup.coding_challenge.services.AlbumService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,20 +10,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Slf4j
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:54967")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1")
 public class AlbumControler {
 
 
     @Autowired
     AlbumService albumService;
-
-    @Autowired
-    UserRepository userRepository;
 
     @Autowired
     AlbumRepository albumRepository;
@@ -40,9 +39,13 @@ public class AlbumControler {
     }
 
     @GetMapping("/albums/{id}")
-    public ResponseEntity<Album> getAlbumById(@PathVariable Integer id) {
-        Album album = albumRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Album not exist with id :" + id));
+    public ResponseEntity<Album> getAlbumById(@PathVariable String id) {
+        Album album;
+        try{
+            album = albumRepository.findByReferenceId(id);
+        } catch (Exception e){
+            throw new ResourceNotFoundException("Album not exist with id :" + id);
+        }
         return ResponseEntity.ok(album);
     }
 
@@ -119,23 +122,5 @@ public class AlbumControler {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(albumList);
-    }
-
-    @DeleteMapping(value = "/delete",
-            produces = "application/json")
-    public ResponseEntity<List<Album>> deleteAll() {
-
-        log.debug("delete des albums");
-
-        try {
-            userRepository.deleteAll();
-            albumService.deleteAll();
-        } catch (Exception e) {
-            // 500 : Pour toute exception
-            log.error("erreur : ", e);
-        }
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(new ArrayList<>());
     }
 }

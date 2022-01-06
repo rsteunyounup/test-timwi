@@ -1,4 +1,4 @@
-import { UriPipe } from './uri.pipe';
+import {UriPipe} from './uri.pipe';
 
 describe('UriPipe', () => {
   it('create an instance', () => {

@@ -1,10 +1,8 @@
 package fr.younup.coding_challenge.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "ALBUM")
@@ -24,10 +22,10 @@ public class Album {
     @Column
     private String referenceId;
 
-    @OneToMany(mappedBy = "album")
-    @JsonIgnore
-    @ToString.Exclude
-    private Set<UserAlbum> albumUsers;
+    @Column
+    private String tag;
 
+    @Column
+    private Boolean liked;
 }
 
